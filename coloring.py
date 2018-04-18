@@ -47,20 +47,36 @@ def three_color(graph):
                 if temp[vertex] < 3:
                     temp[vertex] += 1
                     output.append(dict(temp))
-                #print (output)
                 #Break statement needed for duplicate colorings.
                     break
             
                 else:
                     temp[vertex] = 1
-    print(output)
     return output
 
 # =============================================================================
 #
 def is_three_color(graph):
+    """
+    Function that determines if a given graph can be colored 
+    with only 3 colors
+    
+    NOTE: the multiple false statements are denying all colorings
+     possible for the function because those specific colorings 
+     are not proper. If "True" is printed, that means that a 
+     possible vertex coloring exists.
+    """
     combo = three_color(graph)
-    for poss 
+    
+    #Loops through all combinations of vertex colorings
+    for ThreeColor in combo:
+        if isProper(graph, ThreeColor):
+            
+            #Print statement prints the acceptable coloring for this graph
+            print(ThreeColor)
+            return True
+        
+    return False
 
 # =============================================================================
 #DONE
@@ -108,8 +124,8 @@ def greedy(graph, order):
 
 #isProper({"A" :["B", "C"],"B" :["A", "C"],"C" :["A", "B"]}, {"A" :1, "B" :2, "C" :3})
 #isProper({"A" :["B", "C"],"B" :["A", "C"],"C" :["A", "B"]}, {"A" :1, "B" :1, "C" :3})
-three_color({"A" : ["B"], "B" : ["A"]})
-is_three_color({"A" :["B", "C"], "B" :["A", "C"], "C" :["A", "B"]})
+#print(three_color({"A" : ["B"], "B" : ["A"]}))
+#is_three_color({"A" :["B", "C"], "B" :["A", "C"], "C" :["A", "B"]})
 #is_three_color({"A" :["B", "C", "D"], "B" :["A", "C", "D"], "C" :["A", "B", "D"], "D" :["A", "B", "C"]})
 #is_proper_edge({'A' :[['B', 1], ['C', 2]], 'B' :[['A', 1], ['C', 3]], 'C' :[['A', 2], ['B', 3]]})
 #is_proper_edge({"A" :[["B", 1], ["C", 2]], "B" :[["A", 1], ["C", 2]], "C" :[["A", 2], ["B", 2]]})
